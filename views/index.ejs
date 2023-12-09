@@ -9,6 +9,18 @@
     <button type="submit">Submit</button>
   </div>
 </form>
+
+
+<form action="/sort" method="post">
+  <label for="sort">Sort by:</label>
+  <select name="sort">
+    <option value="rating">Rating</option>
+    <option value="id">Recency</option>
+    </select>
+  <input type="submit">
+</form>
+
+
 <ul>
   <% books.forEach(book => { %>
     <li>

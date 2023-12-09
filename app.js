@@ -8,6 +8,7 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
+app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -20,6 +21,7 @@ const db = new pg.Client({
 });
 db.connect();
 
+//this book will be displayed as an example before user adds anything to database
 let books = [
   {
     id: 1,
@@ -30,9 +32,12 @@ let books = [
   },
 ];
 
+//sorted by id by default
+let sort = "id";
+
 app.get("/", async (req, res) => {
   try {
-    const books = await db.query("SELECT * FROM books order by id");
+    const books = await db.query(`SELECT * FROM books order by ${sort} DESC`);
     const result = books.rows;
     res.render("index.ejs", { books: result });
   } catch (err) {
@@ -48,6 +53,7 @@ app.post("/add", async (req, res) => {
     );
     res.redirect("/");
   } catch (err) {
+    console.error(err);
     res.status(400).send("You Entered wrong ISBN");
   }
 });
@@ -71,6 +77,11 @@ app.post("/edit", async (req, res) => {
   } catch (err) {
     console.log(err);
   }
+});
+
+app.post("/sort", async (req, res) => {
+  sort = req.body.sort;
+  res.redirect("/");
 });
 
 app.listen(port, () => {

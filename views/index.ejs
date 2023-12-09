@@ -1,59 +1,84 @@
 <%- include("partials/header.ejs") %>
-
-<form action="/add" method="POST">
-  <input type="text" name="title" value="" placeholder="Title"/>
-  <input type="text" name="description" value="" placeholder="Description"/>
-  <div>
-    <input type="text" name="isbn" value="" placeholder="Book ISBN"/>
-    <input type="text" name="rating" value="" placeholder="Rating"/>
-    <button type="submit">Submit</button>
+<div class="prettyColor">
+  <div class="container">
+    <div class="submit-form" >
+      <h1>ADD A NEW BOOK</h1>
+      <form action="/add" method="POST" class="flex-container-column" style="margin-top:40px">
+        <div class="labelAndInput">
+          <label for="title">TITLE</label>
+          <input type="text" name="title" value="" placeholder="Hunger Games" autocomplete="off"/>
+        </div>
+        <div class="labelAndInput">
+          <label for="description">DESCRIPTION</label>
+          <input type="text" name="description" value="" placeholder="However you want to describe the book" autocomplete="off"/>
+        </div>
+        <div class="flex-container-noHeight">
+          <div class="labelAndInput">
+            <label for="isbn">ISBN</label>
+            <input type="text" name="isbn" value="" placeholder="0439023483" autocomplete="off"/>
+          </div>
+          <div class="labelAndInput">
+            <label for="rating">RATING</label>
+            <input type="text" name="rating" value="" placeholder="10" autocomplete="off"/>
+          </div>
+           
+            <button type="submit" style="margin-top:15px" class="submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-</form>
+</div>
 
 
-<form action="/sort" method="post">
-  <label for="sort">Sort by:</label>
-  <select name="sort">
-    <option value="rating">Rating</option>
-    <option value="id">Recency</option>
-    </select>
-  <input type="submit">
-</form>
+<div class="container">
+  <form action="/sort" method="post">
+    <div class="sortBy">
+        <label for="sort">SORT BY:</label>
+      <select name="sort">
+        <option value="rating">Rating</option>
+        <option value="id">Recency</option>
+        </select>
+    </div>
+    <button type="submit" class="sortBy-button">Sort</button>
+  </form>
+</div>
 
 
-<ul>
-  <% books.forEach(book => { %>
-    <li>
-      <strong>Title:</strong> <%= book.title %><br>
-      <strong>ISBN:</strong> <%= book.isbn %><br>
-      <strong>Rating:</strong> <%= book.rating %><br>
-      <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book Cover" />
-      <p id="description<%=book.id%>">Description:<%= book.description %></p> <br>
-
-      <form action="/edit" method="POST">
-        <input type="hidden" name="updated_book_id" value="<%= book.id %>">
-        <input id="input<%= book.id %>" type="text" name="updated_item_description" value="<%= book.description %>" autofocus="true" hidden="true"/>
-        <button id="done<%=book.id%>" type="submit" hidden><img width="50" height="50" src="https://img.icons8.com/ios/50/checked-checkbox--v1.png" alt="checked-checkbox--v1"/></button>
-      </form>
-
-      <form action ="/delete" method="POST">
-        <button type="submit" name="book_id" value="<%=book.id %>">
-          <img width="50" height="50" src="https://img.icons8.com/ios/50/close-window--v1.png" alt="close-window--v1"/>
-        </button>
-      </form>
-      
-      <button id="edit<%=book.id%>" onclick="handler('<%=book.id%>')"><img width="50" height="50" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1"/></button>
-    </li>
-  <% }) %>
-</ul>
-<script>
+<div class="container">
+  <ul>
+    <% books.forEach(book => { %>
+      <li>
+        <strong>Title:</strong> <%= book.title %><br>
+        <strong>ISBN:</strong> <%= book.isbn %><br>
+        <strong>Rating:</strong> <%= book.rating %><br>
+        <img src="https://covers.openlibrary.org/b/isbn/<%= book.isbn %>-L.jpg" alt="Book Cover" />
+        <p id="description<%=book.id%>">Description:<%= book.description %></p> <br>
+  
+        <form action="/edit" method="POST">
+          <input type="hidden" name="updated_book_id" value="<%= book.id %>">
+          <input id="input<%= book.id %>" type="text" name="updated_item_description" value="<%= book.description %>" autofocus="true" hidden="true"/>
+          <button id="done<%=book.id%>" type="submit" hidden><img width="50" height="50" src="https://img.icons8.com/ios/50/checked-checkbox--v1.png" alt="checked-checkbox--v1"/></button>
+        </form>
+  
+        <form action ="/delete" method="POST">
+          <button type="submit" name="book_id" value="<%=book.id %>">
+            <img width="50" height="50" src="https://img.icons8.com/ios/50/close-window--v1.png" alt="close-window--v1"/>
+          </button>
+        </form>
         
-function handler(id) {
-document.getElementById("description" + id).setAttribute("hidden", true);
-document.getElementById("edit" + id).setAttribute("hidden", true);
-document.getElementById("done" + id).removeAttribute("hidden");
-document.getElementById("input" + id).removeAttribute("hidden");
-}
+        <button id="edit<%=book.id%>" onclick="handler('<%=book.id%>')"><img width="50" height="50" src="https://img.icons8.com/ios/50/edit--v1.png" alt="edit--v1"/></button>
+      </li>
+    <% }) %>
+  </ul>
+</div>
+
+<script>        
+  function handler(id) {
+  document.getElementById("description" + id).setAttribute("hidden", true);
+  document.getElementById("edit" + id).setAttribute("hidden", true);
+  document.getElementById("done" + id).removeAttribute("hidden");
+  document.getElementById("input" + id).removeAttribute("hidden");
+  }
 </script>
 
 <%- include("partials/footer.ejs") %>

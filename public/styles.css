@@ -44,6 +44,9 @@ input:focus {
   border-radius: 4px;
   margin: 40px 0 40px 0;
 }
+.sortBy-button:hover {
+  background-color: #8874d6;
+}
 .submit-button:hover {
   background-color: #454e59;
 }
@@ -60,6 +63,7 @@ input:focus {
     rgba(231, 75, 144, 0.1) 89.14%,
     #ed7a7a1a 107.65%
   );
+  width: 100% !important;
 }
 .flex-container-column {
   display: flex;
@@ -105,11 +109,6 @@ input[name="description"] {
   gap: 15px;
   flex-wrap: wrap;
 }
-@media (max-width: 650px) {
-  .flex-container-noHeight {
-    flex-direction: column;
-  }
-}
 .sortBy {
   display: inline;
 }
@@ -118,4 +117,68 @@ input[name="description"] {
 }
 li {
   margin: 20px;
+}
+ul {
+  list-style: none;
+}
+
+@media (max-width: 650px) {
+  .flex-container-noHeight {
+    flex-direction: column;
+  }
+  .item-flex-container {
+    flex-direction: column;
+  }
+}
+.item-flex-container {
+  display: flex;
+  justify-content: start;
+  gap: 20px;
+  width: auto;
+}
+.item-flex-container-column {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  justify-content: start;
+  gap: 20px;
+  width: auto;
+}
+strong {
+  display: inline;
+}
+.item-border {
+  border: 2.5px solid #2f2636;
+  padding: 20px;
+}
+.delete-button {
+  background-color: red;
+  box-shadow: 0px 5px 0px rgb(203, 19, 19);
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+.delete-button:active {
+  box-shadow: none;
+  transform: translateY(5px); /* move down by 5px */
+}
+.edit-button {
+  background-color: green;
+  box-shadow: 0px 5px 0px rgb(5, 110, 5);
+  color: white;
+  border-style: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-weight: bold;
+}
+.edit-button:active {
+  box-shadow: none;
+  transform: translateY(5px); /* move down by 5px */
+}
+.small-screen-delete-edit-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }

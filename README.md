@@ -1,7 +1,7 @@
 ![Book_Inventory](https://github.com/EldarGljiva/Book-inventory/assets/116194253/969c4bf3-e135-4e82-8149-c00bdef4fa65)
 ## About
 
-Book Inventory is a responsive design project allowing users to perform CRUD operations, display book covers based on ISBN (International Standard Book Number), and sort books by recently added or rating, utilizing the Open Library Covers API(Screenshots below).
+Book Inventory is a responsive design project allowing users to perform CRUD operations, Store books with displayed book covers based on ISBN (International Standard Book Number) utilized with Open Library Covers API. Additionally, You can sort books by recently added or rating.
 
 ## Technologies Used
 

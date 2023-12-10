@@ -21,17 +21,6 @@ const db = new pg.Client({
 });
 db.connect();
 
-//this book will be displayed as an example before user adds anything to database
-let books = [
-  {
-    id: 1,
-    isbn: "0385472579",
-    title: "nesta",
-    description: "nesta",
-    rating: 3,
-  },
-];
-
 //sorted by id by default
 let sort = "id";
 

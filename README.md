@@ -19,10 +19,10 @@ I recently completed a project called "Book Inventory," using PostgreSQL as my d
 
 ## How to run
 
--open terminal > type npm install >type node app.js > type in browser: localhost:3000
+-open terminal > type `npm install` >type `node app.js` > type in browser: `http://localhost:3000`
 - Database:
 ![Screenshot 2023-12-10 121608](https://github.com/EldarGljiva/Book-inventory/assets/116194253/8771ab81-230b-4adf-af0a-4233fb5c8b0a)
-⚠️ Note: Before running the application, make sure to run npm install to install the required dependencies.
+⚠️ Note: Before running the application, make sure to run `npm install` to install the required dependencies.
 
 ## Screenshots
 ![prvi](https://github.com/EldarGljiva/EldarGljiva/assets/116194253/3e43aecc-4cfa-494b-ba76-b1f973fa6c46)
